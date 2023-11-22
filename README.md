@@ -16,11 +16,9 @@ Inhalt:
 - x64sas2.rom
 - firmware.rom
 
-SHA256-*.zip: 76ECFC1F363C8D363D2C215FAD8E63FAB6BCD10ECD216E659AFA554FA74FCF2F
-
 # UEFI USB Boot Stick erstellen
 
-- FAT32 Formatieren
+- Rufus FreeDOS boot stick erstellen
 - den Ordner "efi" auf den Datenträger kopieren
 - Firmware ins Hauptverzeichnis des USB-Sticks kopieren
 
@@ -30,8 +28,17 @@ E:\mptsas2.rom
 E:\sas2flash.efi  
 E:\SMC2308T.NSH  
 E:\x64sas2.rom  
-E:\efi\boot\BOOTX64.efi  
+E:\efi\boot\bootx64.efi  
+E:\efi\boot\bootia32.efi  
 
 - Per UEFI auf dem Datenträger booten
 - "fs0:" eingeben, mit "dir" kontrollieren ob man auf dem richtigen Datenträger ist.
-- "SMC2308T.NSH" eingeben -> instruktionen befolgen.
+- UEFI: "runIT.NSH", "runIR.NSH" eingeben -> instruktionen befolgen.
+- BIOS: "runIT.bat", "runIR.bat" eingeben -> instruktionen befolgen.
+
+# Linux Commands
+
+unzip Test.zip
+zip Supermicro_AOC_S2308L_P20.zip ./*
+sha256sum Supermicro_AOC_S2308L_P20.zip
+sha256sum Supermicro_AOC_S2308L_P20.zip | tr '[:lower:]' '[:upper:]' > sha256sum.txt
