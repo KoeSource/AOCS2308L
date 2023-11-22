@@ -38,7 +38,9 @@ E:\efi\boot\bootia32.efi
 
 # Linux Commands
 
+```
 unzip Test.zip
-zip Supermicro_AOC_S2308L_P20.zip ./*
+zip -r Supermicro_AOC_S2308L_P20.zip ./*        -> -r ZWINGEND!!!
 sha256sum Supermicro_AOC_S2308L_P20.zip
 sha256sum Supermicro_AOC_S2308L_P20.zip | tr '[:lower:]' '[:upper:]' > sha256sum.txt
+```
