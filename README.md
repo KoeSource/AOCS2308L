@@ -10,31 +10,45 @@ Version:
 
 Inhalt:
 
-- sas2flash UEFI / DOS
-  - Achtung: SMC2308T/R.bat sind nicht getestet!
-- mptsas2.rom
-- x64sas2.rom
-- firmware.rom
+- '/efi'     = UEFI boot shell
+- '/IR'      = IR Firmware (Raid)
+- '/IT'      = IT Firmware (HBA)
+- '/scripts' = Diverse scripts, auslesen der Temperatur, write test
+- Achtung: SMC2308T/R.bat sind nicht getestet!
 
 # UEFI USB Boot Stick erstellen
 
 - Rufus FreeDOS boot stick erstellen
-- den Ordner "efi" auf den Datenträger kopieren
-- Firmware ins Hauptverzeichnis des USB-Sticks kopieren
+- den Ordner "uefiFlash" auf den Datenträger kopieren
+- IR=Raid, IT=HBA
 
 Beispiel:  
-E:\2308T207.ROM  
-E:\mptsas2.rom  
-E:\sas2flash.efi  
-E:\SMC2308T.NSH  
-E:\x64sas2.rom  
+E:\uefiFlash\2308T207.ROM  
+E:\uefiFlash\mptsas2.rom  
+E:\uefiFlash\sas2flash.efi  
+E:\uefiFlash\SMC2308T.NSH  
+E:\uefiFlash\x64sas2.rom  
 E:\efi\boot\bootx64.efi  
 E:\efi\boot\bootia32.efi  
 
 - Per UEFI auf dem Datenträger booten
 - "fs0:" eingeben, mit "dir" kontrollieren ob man auf dem richtigen Datenträger ist.
-- UEFI: "runIT.NSH", "runIR.NSH" eingeben -> instruktionen befolgen.
-- BIOS: "runIT.bat", "runIR.bat" eingeben -> instruktionen befolgen.
+- uefiFlash: "runIT.NSH", "runIR.NSH" eingeben -> instruktionen befolgen.
+- dosFlash: "runIT.bat", "runIR.bat" eingeben -> instruktionen befolgen.
+
+# Temperatur auslesen des HBAs
+
+cd scripts/
+chmod +x ./backup_temp.bash
+./backup_temp.bash
+
+# HBA Testen, daten schreiben mit dd
+
+Achtung: dd löscht alle Daten!
+
+cd scripts/
+chmod +x ./test.bash
+./test.bash
 
 # Linux Commands
 
