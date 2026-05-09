@@ -38,17 +38,17 @@ E:\efi\boot\bootia32.efi
 
 # Temperatur auslesen des HBAs
 
-cd scripts/
-chmod +x ./backup_temp.bash
-./backup_temp.bash
+cd scripts/  
+chmod +x ./backup_temp.bash  
+./backup_temp.bash  
 
 # HBA Testen, daten schreiben mit dd
 
-Achtung: dd löscht alle Daten!
+Achtung: dd löscht alle Daten!  
 
-cd scripts/
-chmod +x ./test.bash
-./test.bash
+cd scripts/  
+chmod +x ./test.bash  
+./test.bash  
 
 # Linux Commands
 
